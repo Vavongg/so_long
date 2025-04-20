@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_base16.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 17:00:10 by ainthana          #+#    #+#             */
-/*   Updated: 2025/04/20 16:38:24 by ainthana         ###   ########.fr       */
+/*   Created: 2024/12/04 12:39:25 by ainthana          #+#    #+#             */
+/*   Updated: 2024/12/04 13:02:22 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "ft_printf.h"
 
-int	main(int ac, char **av)
+size_t	ft_print_base16(long nb, char f)
 {
-	(void)ac;
-	(void)av;
-	return (0);
+	char	*str;
+	char	*base;
+	size_t	len;
+
+	if (f == 'x')
+		base = "0123456789abcdef";
+	if (f == 'X')
+		base = "0123456789ABCDEF";
+	str = ft_itoa_base((unsigned int) nb, base);
+	if (!str)
+		return (0);
+	len = ft_putstr(str);
+	free(str);
+	return (len);
 }
