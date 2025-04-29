@@ -6,14 +6,14 @@
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 16:34:45 by ainthana          #+#    #+#             */
-/*   Updated: 2025/04/20 16:45:36 by ainthana         ###   ########.fr       */
+/*   Updated: 2025/04/30 00:50:58 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>

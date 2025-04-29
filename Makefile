@@ -1,14 +1,14 @@
-NAME = So_long
+NAME = so_long
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3
-LFLAGS		=	libmlx.a libmlx_Linux.a -lX11 -lXext
+LFLAGS = libmlx.a libmlx_Linux.a -lX11 -lXext
 PRINTF = ft_printf/printf
 
 SRC = src/main.c  src/get_next_line.c \
-	  src/parsing/check_map.c \
+
  
 OBJ_DIR = obj
-OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o) \
+OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 RESET = \033[0m
 BOLD = \033[1m
@@ -27,6 +27,8 @@ $(OBJ_DIR):
 	@echo "$(CYAN)───────────────────────────────$(RESET)"
 
 $(NAME): $(OBJ)
+	@$(MAKE) --no-print-directory -C minilibx-linux > /dev/null
+	@echo "$(BLUE)⚙️  Compilation de la MiniLibX terminée$(RESET)"
 	@$(CC) $(OBJ) $(PRINTF) -o $@
 	@echo "$(GREEN)✅ Compilation réussie !$(RESET)"
 	@echo "$(CYAN)───────────────────────────────$(RESET)"

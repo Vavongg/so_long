@@ -6,11 +6,11 @@
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:37:55 by ainthana          #+#    #+#             */
-/*   Updated: 2025/04/18 14:37:58 by ainthana         ###   ########.fr       */
+/*   Updated: 2025/04/30 00:52:16 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../include/so_long.h"
 
 char	*recurs(int depth, int *ret, int fd)
 {

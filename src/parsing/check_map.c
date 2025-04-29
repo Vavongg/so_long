@@ -6,11 +6,11 @@
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 16:33:35 by ainthana          #+#    #+#             */
-/*   Updated: 2025/04/20 16:38:15 by ainthana         ###   ########.fr       */
+/*   Updated: 2025/04/30 00:55:02 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h""
+#include "../../include/so_long.h"
 
 int	check_file(char *str, t_long *game)
 {
