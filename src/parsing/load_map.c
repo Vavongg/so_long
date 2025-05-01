@@ -66,7 +66,7 @@ int	check_map(t_long *game)
 	if (game->playerset < 1)
 		error_msg(game, "Missing player");
 	if (game->playerset > 1)
-		error_msg(game, "SOLO LEVELING ON A DIT");
+		error_msg(game, "There must be only one player");
 	if (game->exitset < 1)
 		error_msg(game, "No exit found");
 	if (game->exitset > 1)
