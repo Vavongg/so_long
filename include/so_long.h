@@ -6,7 +6,7 @@
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 16:34:45 by ainthana          #+#    #+#             */
-/*   Updated: 2025/05/01 18:37:53 by ainthana         ###   ########.fr       */
+/*   Updated: 2025/05/03 15:55:55 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ void	floodandfill2(t_long *game, int mapy, int mapx);
 char	replace_char(char c);
 
 //utils
-char	*recurs(int depth, int *ret, int fd);
-int		get_next_line(int fd, char **line);
 void	ft_putchar(char c);
 char	*ft_strcpy(char *dest, char *src);
 void	ft_putnbr(int nb);
@@ -103,5 +101,26 @@ int		exit_and_free(t_long *game);
 int		error_msg(t_long *game, char *str);
 int		get_next_line(int fd, char **line);
 int		is_whitespace(char *str);
+
+//render
+int		display(t_long *game);
+int		go_hooking(t_long *game);
+int		key_loop(t_long *game);
+int		render(t_long *game);
+int		create_window(t_long *game);
+int		load_textures(t_long *game);
+int		load_textures2(t_long *game);
+int		print_texture(t_long *game, int starter_X, int starter_Y);
+int		get_texture(int X, int Y, t_long *game);
+int		player_moves(int nb, t_long *game);
+int		show_moves(t_long *game, int nb);
+int		final_moves(t_long *game);
+int		player_position(t_long *game);
+int		key_hit(int keycode, t_long *game);
+int		ft_keyboard(t_long *game);
+int		close_button(t_long *game);
+int		put_pxl(t_long *game, int x, int y, unsigned int c);
+int		visible(t_long *game);
+void	reset_keyboard(t_long *game);
 
 #endif

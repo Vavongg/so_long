@@ -6,6 +6,7 @@ LFLAGS = libmlx.a libmlx_Linux.a -lX11 -lXext
 SRC = 	src/main.c \
 		src/parsing/check_map.c src/parsing/load_map.c src/parsing/parsing.c \
 		src/utils/get_next_line.c src/utils/ft_utils1.c src/utils/ft_utils2.c src/utils/free_errors.c \
+		src/render/create_img.c src/render/key.c src/render/player_moves.c src/render/print_texture.c src/render/render.c \
 
 OBJ_DIR = obj
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)

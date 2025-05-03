@@ -1,47 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils2.c                                        :+:      :+:    :+:   */
+/*   create_img.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 17:50:33 by ainthana          #+#    #+#             */
-/*   Updated: 2025/05/01 17:50:33 by ainthana         ###   ########.fr       */
+/*   Created: 2025/05/03 14:36:24 by ainthana          #+#    #+#             */
+/*   Updated: 2025/05/03 14:36:24 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	ft_putstr(char *str)
+int	put_pxl(t_long *game, int x, int y, unsigned int c)
 {
-	int	i;
+	char		*dest;
 
-	i = 0;
-	ft_putchar(str[i]);
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
+	if (y >= game->height || x >= game->width || x < 0 \
+	|| y < 0)
+		return (0);
+	dest = game->pxl + game->s_line * y + x * (game->bpp / 8);
+	*(unsigned int *)dest = c;
+	return (0);
 }
 
-size_t	ft_strlen(const char *s)
+int	visible(t_long *game)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-int	is_whitespace(char *str)
-{
-	int	index;
-
-	index = 0;
-	while (str[index] == '\t' || str[index] == '\r'
-		|| str[index] == '\v' || str[index] == ' ')
-		index++;
-	return (index);
+	render(game);
+	player_position(game);
+	mlx_put_image_to_window(game->mlx_ptr,
+		game->mlx_win, game->img, 0, 0);
+	return (0);
 }
