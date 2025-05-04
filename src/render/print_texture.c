@@ -15,7 +15,7 @@
 int	load_textures(t_long *game)
 {
 	game->text[0] = mlx_xpm_file_to_image(game->mlx_ptr, \
-					"./src/images/floor.xpm",
+					"./src/images/grass.xpm",
 			&game->widthtext[0], &game->heighttext[0]);
 	game->ptr_text[0] = mlx_get_data_addr(game->text[0],
 			&(game->bpp_text[0]), &(game->sline_text[0]), &(game->ed_text[0]));
@@ -25,7 +25,7 @@ int	load_textures(t_long *game)
 	game->ptr_text[1] = mlx_get_data_addr(game->text[1],
 			&(game->bpp_text[1]), &(game->sline_text[1]), &(game->ed_text[1]));
 	game->text[3] = mlx_xpm_file_to_image(game->mlx_ptr, \
-					"./src/images/bard.xpm",
+					"./src/images/kirby.xpm",
 			&game->widthtext[3], &game->heighttext[3]);
 	return (0);
 }
@@ -35,12 +35,12 @@ int	load_textures2(t_long *game)
 	game->ptr_text[3] = mlx_get_data_addr(game->text[3],
 			&(game->bpp_text[3]), &(game->sline_text[3]), &(game->ed_text[3]));
 	game->text[2] = mlx_xpm_file_to_image(game->mlx_ptr, \
-					"./src/images/meep.xpm",
+					"./src/images/star.xpm",
 			&game->widthtext[2], &game->heighttext[2]);
 	game->ptr_text[2] = mlx_get_data_addr(game->text[2],
 			&(game->bpp_text[2]), &(game->sline_text[2]), &(game->ed_text[2]));
 	game->text[4] = mlx_xpm_file_to_image(game->mlx_ptr, \
-					"./src/images/ult_ryze.xpm",
+					"./src/images/exit.xpm",
 			&game->widthtext[4], &game->heighttext[4]);
 	game->ptr_text[4] = mlx_get_data_addr(game->text[4],
 			&(game->bpp_text[4]), &(game->sline_text[4]), &(game->ed_text[4]));
