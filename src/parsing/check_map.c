@@ -6,7 +6,7 @@
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 16:33:35 by ainthana          #+#    #+#             */
-/*   Updated: 2025/05/03 21:26:29 by ainthana         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:35:43 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,14 @@ int	check_walls2(t_long *game)
 	int	mapx;
 	int	mapy;
 
-	mapy = (int)game->player_x;
-	mapx = (int)game->player_y;
+	mapx = (int)game->player_x;
+	mapy = (int)game->player_y;
 	game->collectibles_found = 0;
 	game->exits_found = 0;
-	floodandfill(game, mapx, mapy + 1);
-	floodandfill(game, mapx, mapy - 1);
-	floodandfill(game, mapx + 1, mapy);
-	floodandfill(game, mapx, mapy - 1);
+	floodandfill(game, mapy, mapx + 1);
+	floodandfill(game, mapy, mapx - 1);
+	floodandfill(game, mapy + 1, mapx);
+	floodandfill(game, mapy - 1, mapx);
 	if (game->collectibles_found != game->collectible_total)
 		error_msg(game, "Collectibles are misplaced");
 	if (game->exits_found == 0)

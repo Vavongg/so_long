@@ -82,6 +82,6 @@ int	create_window(t_long *game)
 			&(game->bpp), &(game->s_line),
 			&(game->ed));
 	game->mlx_win = mlx_new_window(game->mlx_ptr, game->width,
-			game->height, "Kirby il veut tout graille");
+			game->height, "Kirby Nom Nom");
 	return (0);
 }
