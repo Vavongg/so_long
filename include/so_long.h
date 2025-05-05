@@ -6,7 +6,7 @@
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 16:34:45 by ainthana          #+#    #+#             */
-/*   Updated: 2025/05/05 12:54:10 by ainthana         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:57:48 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ int		checkifgood(char c);
 int		variables_init(t_long *game);
 int		get_position(t_long *game, char *filename);
 int		parsing(t_long *game, char *av);
+void	floodandfill2(t_long *game, int mapy, int mapx);
+char	replace_char(char c);
 
 /* ************************************************************************** */
 /*                               Utils                                        */
