@@ -86,5 +86,6 @@ int	variables_init(t_long *game)
 	game->lastplayer_x = -1;
 	game->lastplayer_y = -1;
 	game->mlx_ptr = NULL;
+	game->on_exit = 0;
 	return (0);
 }
