@@ -59,8 +59,6 @@ int render(t_long *game)
 	return (0);
 }
 
-
-
 int	create_window(t_long *game)
 {
 	game->mlx_ptr = mlx_init();
@@ -68,3 +66,33 @@ int	create_window(t_long *game)
 			game->height, "Kirby Nom Nom");
 	return (0);
 }
+
+void handle_tile_interaction(t_long *game, char next_tile, int nx, int ny)
+{
+	if (next_tile == 'C')
+		game->collectible++;
+
+	if (next_tile == 'E' && game->collectible == game->collectible_total)
+	{
+		write(1, "\rMoves : ", 9);
+		ft_putnbr(game->move + 1);
+		write(1, "\nCongratulations! You finished within ", 38);
+		ft_putnbr(game->move + 1);
+		write(1, " moves.\n", 9);
+		exit_and_free(game);
+	}
+
+	if (game->on_exit)
+		game->map[game->player_y][game->player_x] = 'E';
+	else
+		game->map[game->player_y][game->player_x] = '0';
+
+	if (next_tile == 'E')
+		game->on_exit = 1;
+	else
+	{
+		game->map[ny][nx] = 'P';
+		game->on_exit = 0;
+	}
+}
+

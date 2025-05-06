@@ -53,7 +53,6 @@ int print_texture(t_long *game, int starter_X, int starter_Y)
     return (0);
 }
 
-
 int	get_texture(int X, int Y, t_long *game)
 {
 	if (game->map[Y][X] == '0' || game->map[Y][X] == 'a')

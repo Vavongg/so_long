@@ -6,7 +6,7 @@
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 16:34:45 by ainthana          #+#    #+#             */
-/*   Updated: 2025/05/06 18:34:24 by ainthana         ###   ########.fr       */
+/*   Updated: 2025/05/07 00:22:31 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,6 @@ int		key_hit(int keycode, t_long *game);
 int		ft_keyboard(t_long *game);
 int		close_button(t_long *game);
 void	reset_keyboard(t_long *game);
+void 	handle_tile_interaction(t_long *game, char next_tile, int nx, int ny);
 
 #endif

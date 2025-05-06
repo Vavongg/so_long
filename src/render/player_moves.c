@@ -43,24 +43,18 @@ int show_moves(t_long *game, int nb)
 	int ny = game->player_y + (nb == -1) - (nb == 1);
 	char next_tile = game->map[ny][nx];
 
-	if (next_tile == '1') return (0);
-	if (next_tile == 'C') game->collectible++;
-	if (next_tile == 'E' && game->collectible == game->collectible_total)
-	{
-		ft_putstr("\rMoves : "); ft_putnbr(++game->move);
-		ft_putstr("\nCongratulations! You finished within ");
-		ft_putnbr(game->move); ft_putstr(" moves.\n");
-		exit_and_free(game);
-	}
-	if (game->on_exit)
-		game->map[game->player_y][game->player_x] = 'E';
-	else
-		game->map[game->player_y][game->player_x] = '0';
-	game->on_exit = (next_tile == 'E') ? 1 : 0;
-	if (next_tile != 'E') game->map[ny][nx] = 'P';
+	if (next_tile == '1')
+		return (0);
+
+	handle_tile_interaction(game, next_tile, nx, ny);
+
 	game->player_x = nx;
 	game->player_y = ny;
-	ft_putstr("\rMoves : "); ft_putnbr(++game->move);
+
+	game->move++;
+	write(1, "\rMoves : ", 9);
+	ft_putnbr(game->move);
+
 	render(game);
 	return (0);
 }
