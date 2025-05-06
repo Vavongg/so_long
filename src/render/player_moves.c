@@ -12,38 +12,56 @@
 
 #include "../../include/so_long.h"
 
-int	player_moves(int nb, t_long *game)
+int player_moves(int nb, t_long *game)
 {
-	if (nb == 1)
-		if (game->map[game->player_y - 1][game->player_x] != '1')
-			show_moves(game, nb);
-	if (nb == -1)
-		if (game->map[game->player_y + 1][game->player_x] != '1')
-			show_moves(game, nb);
-	if (nb == 2)
-		if (game->map[game->player_y][game->player_x - 1] != '1')
-			show_moves(game, nb);
-	if (nb == 3)
-		if (game->map[game->player_y][game->player_x + 1] != '1')
-			show_moves(game, nb);
-	return (0);
+    if (nb == 1)
+    {
+        if (game->map[game->player_y - 1][game->player_x] != '1')
+            show_moves(game, nb);
+    }
+    else if (nb == -1)
+    {
+        if (game->map[game->player_y + 1][game->player_x] != '1')
+            show_moves(game, nb);
+    }
+    else if (nb == 2)
+    {
+        if (game->map[game->player_y][game->player_x - 1] != '1')
+            show_moves(game, nb);
+    }
+    else if (nb == 3)
+    {
+        if (game->map[game->player_y][game->player_x + 1] != '1')
+            show_moves(game, nb);
+    }
+    return (0);
 }
 
-int	show_moves(t_long *game, int nb)
+int show_moves(t_long *game, int nb)
 {
-	write(1, "\b\b\b\b\b\b\b\b\b\b\b", 12);
-	if (nb == 1)
-		game->player_y--;
-	if (nb == -1)
-		game->player_y++;
-	if (nb == 2)
-		game->player_x--;
-	if (nb == 3)
-		game->player_x++;
-	game->move++;
-	write(1, "Moves : ", 9);
-	ft_putnbr(game->move);
-	final_moves(game);
+	int nx = game->player_x + (nb == 3) - (nb == 2);
+	int ny = game->player_y + (nb == -1) - (nb == 1);
+	char next_tile = game->map[ny][nx];
+
+	if (next_tile == '1') return (0);
+	if (next_tile == 'C') game->collectible++;
+	if (next_tile == 'E' && game->collectible == game->collectible_total)
+	{
+		ft_putstr("\rMoves : "); ft_putnbr(++game->move);
+		ft_putstr("\nCongratulations! You finished within ");
+		ft_putnbr(game->move); ft_putstr(" moves.\n");
+		exit_and_free(game);
+	}
+	if (game->on_exit)
+		game->map[game->player_y][game->player_x] = 'E';
+	else
+		game->map[game->player_y][game->player_x] = '0';
+	game->on_exit = (next_tile == 'E') ? 1 : 0;
+	if (next_tile != 'E') game->map[ny][nx] = 'P';
+	game->player_x = nx;
+	game->player_y = ny;
+	ft_putstr("\rMoves : "); ft_putnbr(++game->move);
+	render(game);
 	return (0);
 }
 

@@ -41,7 +41,6 @@ int	exit_and_free(t_long *game)
 			mlx_destroy_image(game->mlx_ptr, game->text[i]);
 			i++;
 		}
-		mlx_destroy_image(game->mlx_ptr, game->img);
 		mlx_destroy_window(game->mlx_ptr, game->mlx_win);
 		mlx_destroy_display(game->mlx_ptr);
 	}

@@ -47,32 +47,12 @@ int	load_textures2(t_long *game)
 	return (0);
 }
 
-int	print_texture(t_long *game, int starter_X, int starter_Y)
+int print_texture(t_long *game, int starter_X, int starter_Y)
 {
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (y < game->heighttext[game->texture])
-	{
-		while (x < game->widthtext[game->texture])
-		{
-			game->color = *(unsigned int *)(game->ptr_text[game->texture]
-					+ game->sline_text[game->texture] * y + x
-					* (game->bpp_text[game->texture] / 8));
-			if (game->color != 0)
-			{
-				put_pxl(game, starter_X * 64 + x, starter_Y * 64 + \
-						y, game->color);
-			}
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	return (0);
+    mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->text[game->texture], starter_X * 64, starter_Y * 64);
+    return (0);
 }
+
 
 int	get_texture(int X, int Y, t_long *game)
 {
@@ -85,6 +65,14 @@ int	get_texture(int X, int Y, t_long *game)
 	if (game->map[Y][X] == 'E')
 		game->texture = 4;
 	if (game->map[Y][X] == 'P')
-		game->texture = 0;
+		game->texture = 3;
 	return (0);
 }
+int visible(int keycode, t_long *game)
+{
+    (void)keycode;
+    (void)game;
+    return (0);
+}
+
+

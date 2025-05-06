@@ -6,7 +6,7 @@
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 16:34:45 by ainthana          #+#    #+#             */
-/*   Updated: 2025/05/05 12:57:48 by ainthana         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:34:24 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define RIGHT 100    // Touche D pour aller à droite
 # define LEFT 97      // Touche A pour aller à gauche
 # define ESC 65307    // Touche ESC pour quitter
-# define RED_BUTTON 79
-# define CLOSERED 33
+# define RED_BUTTON 79 // Touche pour fermer la fenêtre
+# define CLOSERED 33 // Event pour fermer la fenêtre
 
 /* ************************************************************************** */
 /*                          Structure                                         */
@@ -70,26 +70,13 @@ typedef struct s_long
 	int				exitset;
 	int				collectibleset;
 
-	// Pointeur pour l'image pixel
-	char			*pxl;
-	// Paramètres de texture pour l'image
-	int				bpp;
-	int				s_line;
-
-	// Dimensions des cases de la carte
-	double			casetotal;
-	double			casein;
-
-	// Endianness
-	int				ed;
-
 	// Pointeurs pour l'affichage avec mlx
 	void			*mlx_ptr;
 	void			*mlx_win;
-	void			*img;
 
 	// Tableau pour gérer les entrées clavier
 	int				keyboard[70000];
+	
 	// Indicateur pour libérer la carte
 	int				maptofree;
 
@@ -102,6 +89,7 @@ typedef struct s_long
 	int				widthtext[10];
 	int				heighttext[10];
 	int				texture;
+	int				on_exit;
 
 	// Couleur pour l'affichage
 	unsigned int	color;
@@ -150,6 +138,7 @@ int		is_whitespace(char *str);
 /* ************************************************************************** */
 int		display(t_long *game);
 int		go_hooking(t_long *game);
+int		visible(int keycode, t_long *game);
 int		key_loop(t_long *game);
 int		render(t_long *game);
 int		create_window(t_long *game);
@@ -164,8 +153,6 @@ int		player_position(t_long *game);
 int		key_hit(int keycode, t_long *game);
 int		ft_keyboard(t_long *game);
 int		close_button(t_long *game);
-int		put_pxl(t_long *game, int x, int y, unsigned int c);
-int		visible(t_long *game);
 void	reset_keyboard(t_long *game);
 
 #endif

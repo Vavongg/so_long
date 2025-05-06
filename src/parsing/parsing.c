@@ -74,14 +74,10 @@ int	variables_init(t_long *game)
 	game->keyboard[LEFT] = 0;
 	game->keyboard[RIGHT] = 0;
 	game->keyboard[ADVANCE] = 0;
-	game->bpp = 0;
-	game->casein = 0;
-	game->casetotal = 0;
 	game->y = 0;
 	game->x = 0;
 	game->collectible = 0;
 	game->collectible_total = 0;
-	game->s_line = 0;
 	game->maptofree = -1;
 	game->move = 0;
 	game->playerset = 0;

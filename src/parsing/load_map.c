@@ -41,7 +41,6 @@ int	stock_line(t_long *game, char *line, int nb)
 	index = 0;
 	while (line[index])
 	{
-		game->casetotal++;
 		game->map[nb][index] = replace_char(line[index]);
 		if (line[index] == 'P')
 		{

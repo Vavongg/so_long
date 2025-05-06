@@ -22,8 +22,6 @@ int	display(t_long *game)
 	write(1, "Moves : ", 9);
 	ft_putnbr(game->move);
 	player_position(game);
-	mlx_put_image_to_window(game->mlx_ptr,
-		game->mlx_win, game->img, 0, 0);
 	go_hooking(game);
 	return (0);
 }
@@ -38,49 +36,34 @@ int	go_hooking(t_long *game)
 	return (0);
 }
 
-int	key_loop(t_long *game)
+int render(t_long *game)
 {
-	ft_keyboard(game);
-	if (game->keyboard[ESC] == 1 || game->keyboard[RIGHT] == 1
-		|| game->keyboard[LEFT] == 1 || game->keyboard[BACK] == 1
-		|| game->keyboard[ADVANCE] == 1)
-	{
-		player_position(game);
-		mlx_put_image_to_window(game->mlx_ptr,
-			game->mlx_win, game->img, 0, 0);
-	}
-	return (0);
-}
-
-int	render(t_long *game)
-{
-	int	x;
-	int	y;
+	int x;
+	int y;
 
 	y = 0;
-	x = 0;
 	while (y < game->y)
 	{
+		x = 0;
 		while (x < game->x)
 		{
-			game->casein++;
 			get_texture(x, y, game);
-			print_texture(game, x, y);
+			mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
+				game->text[game->texture], x * 64, y * 64);
 			x++;
 		}
-		x = 0;
 		y++;
 	}
+	mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
+		game->text[3], game->player_x * 64, game->player_y * 64);
 	return (0);
 }
+
+
 
 int	create_window(t_long *game)
 {
 	game->mlx_ptr = mlx_init();
-	game->img = mlx_new_image(game->mlx_ptr, game->width, game->height);
-	game->pxl = mlx_get_data_addr(game->img,
-			&(game->bpp), &(game->s_line),
-			&(game->ed));
 	game->mlx_win = mlx_new_window(game->mlx_ptr, game->width,
 			game->height, "Kirby Nom Nom");
 	return (0);
