@@ -12,49 +12,48 @@
 
 #include "../../include/so_long.h"
 
-int player_moves(int nb, t_long *game)
+int	player_moves(int nb, t_long *game)
 {
-    if (nb == 1)
-    {
-        if (game->map[game->player_y - 1][game->player_x] != '1')
-            show_moves(game, nb);
-    }
-    else if (nb == -1)
-    {
-        if (game->map[game->player_y + 1][game->player_x] != '1')
-            show_moves(game, nb);
-    }
-    else if (nb == 2)
-    {
-        if (game->map[game->player_y][game->player_x - 1] != '1')
-            show_moves(game, nb);
-    }
-    else if (nb == 3)
-    {
-        if (game->map[game->player_y][game->player_x + 1] != '1')
-            show_moves(game, nb);
-    }
-    return (0);
+	if (nb == 1)
+	{
+		if (game->map[game->player_y - 1][game->player_x] != '1')
+			show_moves(game, nb);
+	}
+	else if (nb == -1)
+	{
+		if (game->map[game->player_y + 1][game->player_x] != '1')
+			show_moves(game, nb);
+	}
+	else if (nb == 2)
+	{
+		if (game->map[game->player_y][game->player_x - 1] != '1')
+			show_moves(game, nb);
+	}
+	else if (nb == 3)
+	{
+		if (game->map[game->player_y][game->player_x + 1] != '1')
+			show_moves(game, nb);
+	}
+	return (0);
 }
 
-int show_moves(t_long *game, int nb)
+int	show_moves(t_long *game, int nb)
 {
-	int nx = game->player_x + (nb == 3) - (nb == 2);
-	int ny = game->player_y + (nb == -1) - (nb == 1);
-	char next_tile = game->map[ny][nx];
+	int		nx;
+	int		ny;
+	char	next_tile;
 
+	nx = game->player_x + (nb == 3) - (nb == 2);
+	ny = game->player_y + (nb == -1) - (nb == 1);
+	next_tile = game->map[ny][nx];
 	if (next_tile == '1')
 		return (0);
-
 	handle_tile_interaction(game, next_tile, nx, ny);
-
 	game->player_x = nx;
 	game->player_y = ny;
-
 	game->move++;
 	write(1, "\rMoves : ", 9);
 	ft_putnbr(game->move);
-
 	render(game);
 	return (0);
 }

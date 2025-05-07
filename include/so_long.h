@@ -34,53 +34,39 @@
 /* ************************************************************************** */
 typedef struct s_long
 {
-	// Carte du jeu (tableau 2D)
 	char			**map;
 
-	// Dimensions de la carte
 	int				width;
 	int				height;
 
-	// Position actuelle et précédente du joueur
 	int				x;
 	int				y;
 	int				oldx;
 
-	// Compteurs pour les objets trouvés
 	int				collectibles_found;
 	int				exits_found;
 
-	// Position du joueur sur la carte
 	int				player_x;
 	int				player_y;
 
-	// Dernière position du joueur
 	int				lastplayer_x;
 	int				lastplayer_y;
 
-	// Compteurs de collectibles
 	int				collectible;
 	int				collectible_total;
 
-	// Compteur de déplacements
 	int				move;
 
-	// Flags pour initialisation des éléments
 	int				playerset;
 	int				exitset;
 	int				collectibleset;
 
-	// Pointeurs pour l'affichage avec mlx
 	void			*mlx_ptr;
 	void			*mlx_win;
 
-	// Tableau pour gérer les entrées clavier
 	int				keyboard[70000];
-	
-	// Indicateur pour libérer la carte
 	int				maptofree;
 
-	// Paramètres pour gérer les textures
 	int				bpp_text[10];
 	int				sline_text[10];
 	int				ed_text[10];
@@ -91,7 +77,6 @@ typedef struct s_long
 	int				texture;
 	int				on_exit;
 
-	// Couleur pour l'affichage
 	unsigned int	color;
 }					t_long;
 
@@ -154,6 +139,6 @@ int		key_hit(int keycode, t_long *game);
 int		ft_keyboard(t_long *game);
 int		close_button(t_long *game);
 void	reset_keyboard(t_long *game);
-void 	handle_tile_interaction(t_long *game, char next_tile, int nx, int ny);
+void	handle_tile_interaction(t_long *game, char next_tile, int nx, int ny);
 
 #endif

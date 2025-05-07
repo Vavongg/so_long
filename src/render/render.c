@@ -36,10 +36,10 @@ int	go_hooking(t_long *game)
 	return (0);
 }
 
-int render(t_long *game)
+int	render(t_long *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < game->y)
@@ -67,11 +67,10 @@ int	create_window(t_long *game)
 	return (0);
 }
 
-void handle_tile_interaction(t_long *game, char next_tile, int nx, int ny)
+void	handle_tile_interaction(t_long *game, char next_tile, int nx, int ny)
 {
 	if (next_tile == 'C')
 		game->collectible++;
-
 	if (next_tile == 'E' && game->collectible == game->collectible_total)
 	{
 		write(1, "\rMoves : ", 9);
@@ -81,12 +80,10 @@ void handle_tile_interaction(t_long *game, char next_tile, int nx, int ny)
 		write(1, " moves.\n", 9);
 		exit_and_free(game);
 	}
-
 	if (game->on_exit)
 		game->map[game->player_y][game->player_x] = 'E';
 	else
 		game->map[game->player_y][game->player_x] = '0';
-
 	if (next_tile == 'E')
 		game->on_exit = 1;
 	else
@@ -95,4 +92,3 @@ void handle_tile_interaction(t_long *game, char next_tile, int nx, int ny)
 		game->on_exit = 0;
 	}
 }
-
