@@ -35,7 +35,10 @@ int	get_position(t_long *game, char *filename)
 	{
 		game->x = ft_strlen(line);
 		if (game->x != game->oldx)
+		{
+			free(line);
 			error_msg(game, "Invalid map: must be rectangular");
+		}
 		game->oldx = game->x;
 		if (ret != -1)
 			free(line);
